@@ -1,0 +1,179 @@
+/* ============  Variables y base  ============ */
+:root{
+  --bg: #0b0d12;
+  --surface: #10131a;
+  --text: #e7ecf3;
+  --muted: #a9b0bd;
+  --brand: #8ab4ff; /* acento frío */
+  --accent: #ff6b6b; /* acento cálido para hover, inspirado en la nebulosa */
+  --shadow: 0 10px 30px rgba(0,0,0,.45);
+
+  /* imagen dinámica del hero (se setea desde JS) */
+  --hero-image: url("../img/nebulosa-lacerta.jpg");
+  --overlay-from: rgba(10,12,18,.85);
+  --overlay-to: rgba(10,12,18,.35);
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+html{ scroll-behavior: smooth; }
+body{
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ============  Encabezado  ============ */
+.site-header{
+  position: fixed; inset-inline: 0; top: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px;
+  background: linear-gradient(180deg, rgba(10,12,18,.85), rgba(10,12,18,0));
+  z-index: 40;
+  backdrop-filter: blur(6px);
+}
+.brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); font-weight:800; letter-spacing:.2px; }
+.brand__dot{ width:12px; height:12px; border-radius:50%; background: var(--brand); box-shadow: 0 0 16px var(--brand); }
+.brand__name{ font-variant-ligatures: none; }
+
+.site-nav{ display:flex; gap:16px; }
+.nav-link{
+  color: var(--muted); text-decoration: none; font-weight:600;
+  padding: 8px 10px; border-radius: 10px;
+}
+.nav-link:hover{ color: var(--text); background: rgba(255,255,255,.06); }
+.nav-link.is-active{ color: var(--text); }
+
+/* ============  Hero  ============ */
+.hero{
+  position: relative;
+  min-height: 100svh; /* full screen incl. mobile UI */
+  display: grid;
+  grid-template-columns: minmax(280px, 720px);
+  align-items: center;
+  padding: clamp(72px, 8vw, 96px) 24px 32px;
+  overflow: clip;
+}
+
+.hero__backdrop{
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(90deg, var(--overlay-from) 0%, var(--overlay-to) 65%),
+    var(--hero-image);
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.05) contrast(1.05);
+  transform: scale(1.02);
+  transition: transform .8s ease, opacity .5s ease;
+  opacity: 0.001; /* fade-in control */
+}
+.hero.is-loaded .hero__backdrop{ opacity: 1; transform: scale(1); }
+
+.hero__content{
+  position: relative; z-index: 10;
+  width: min(720px, 92vw);
+  padding: clamp(12px, 2vw, 16px);
+  border-radius: 16px;
+}
+
+.eyebrow{
+  color: var(--brand);
+  font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  margin: 0 0 10px;
+  font-size: .85rem;
+}
+
+.hero__title{
+  margin: 0 0 8px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.hero__subtitle{
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.hero__description{
+  margin: 0 0 22px;
+  color: #d5dbea;
+  max-width: 65ch;
+}
+
+/* Buttons */
+.btn{
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: .5rem;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700; text-decoration: none;
+  transition: transform .1s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+  box-shadow: var(--shadow);
+  border: 1px solid transparent;
+}
+.btn:active{ transform: translateY(1px); }
+
+.btn--primary{
+  background: var(--brand);
+  color: #07111e;
+  border-color: color-mix(in oklab, var(--brand), black 20%);
+}
+.btn--primary:hover{
+  background: color-mix(in oklab, var(--brand), white 10%);
+}
+
+.btn--ghost{
+  background: transparent;
+  color: var(--text);
+  border-color: rgba(255,255,255,.18);
+}
+.btn--ghost:hover{
+  background: rgba(255,255,255,.08);
+}
+
+/* Chips */
+.hero__meta{
+  position: absolute; right: 16px; bottom: 16px; display:flex; gap:10px; z-index: 10;
+}
+.chip{
+  appearance: none; cursor: pointer;
+  border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.04);
+  color: var(--text);
+  padding: 8px 10px; border-radius: 999px; font-weight:700;
+}
+.chip:hover{ background: rgba(255,255,255,.1); }
+
+/* Footer */
+.site-footer{
+  display: grid; place-items: center;
+  padding: 18px;
+  color: var(--muted);
+  background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.35));
+}
+
+/* Responsive layout */
+@media (min-width: 960px){
+  .hero{
+    grid-template-columns: 1fr minmax(560px, 720px);
+    justify-items: start;
+    padding-left: clamp(48px, 6vw, 80px);
+  }
+  .hero__content{
+    grid-column: 2;
+    background: linear-gradient(180deg, rgba(16,19,26,.65), rgba(16,19,26,0));
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* Accesibilidad foco visible */
+:where(a,button){ outline: none; }
+:where(a,button):focus-visible{
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand), white 15%), 0 0 0 6px rgba(255,255,255,.15);
+  border-radius: 12px;
+}

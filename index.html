@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cosmos Diario — Inicio</title>
+  <meta name="description" content="Imagen Astronómica del Día (APOD) — Inspírate con el universo." />
+
+  <!-- Tipografías (puedes cambiarlas en styles.css) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <noscript>Activa JavaScript para ver la Imagen Astronómica del Día.</noscript>
+
+  <!-- Header -->
+  <header class="site-header" role="banner" aria-label="Encabezado principal">
+    <a class="brand" href="#" aria-label="Inicio Cosmos Diario">
+      <span class="brand__dot" aria-hidden="true"></span>
+      <span class="brand__name">Cosmos Diario</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Navegación principal">
+      <a class="nav-link is-active" href="#">Inicio</a>
+      <a class="nav-link" href="#archivo" aria-disabled="true">Archivo</a>
+      <a class="nav-link" href="#about" aria-disabled="true">Sobre</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <main id="main" class="hero" role="main" aria-labelledby="apod-title">
+    <!-- Capa de fondo (se inyecta la imagen vía CSS var) -->
+    <div class="hero__backdrop" aria-hidden="true"></div>
+
+    <!-- Contenido -->
+    <section class="hero__content" aria-live="polite">
+      <p class="eyebrow" id="apod-date">APOD — Cargando…</p>
+
+      <h1 class="hero__title" id="apod-title">Cargando título…</h1>
+
+      <p class="hero__subtitle" id="apod-credit">Créditos: —</p>
+
+      <p class="hero__description" id="apod-desc">
+        Preparando la explicación del día…
+      </p>
+
+      <div class="hero__actions">
+        <a id="cta-detail" class="btn btn--primary" href="#" aria-label="Ver detalle del APOD de hoy">Ver detalle</a>
+        <a id="cta-archive" class="btn btn--ghost" href="#" aria-label="Explorar archivo de imágenes">Explorar archivo</a>
+      </div>
+    </section>
+
+    <!-- Indicadores / extras -->
+    <div class="hero__meta">
+      <button id="open-hd" class="chip" type="button" aria-label="Abrir en alta resolución">HD</button>
+      <button id="random-apod" class="chip" type="button" aria-label="Ver un APOD aleatorio">Aleatorio</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <small>
+      Datos vía <a href="https://api.nasa.gov/" rel="noopener" target="_blank">NASA APOD API</a>.
+      Este sitio no es oficial de NASA.
+    </small>
+  </footer>
+
+  <script src="./assets/js/main.js" defer></script>
+</body>
+</html>
