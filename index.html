@@ -6,7 +6,7 @@
   <title>Cosmos Diario — Inicio</title>
   <meta name="description" content="Imagen Astronómica del Día (APOD) — Inspírate con el universo." />
 
-  <!-- Tipografías (puedes cambiarlas en styles.css) -->
+  <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
@@ -24,106 +24,104 @@
 
     <nav class="site-nav" aria-label="Navegación principal">
       <a class="nav-link is-active" href="#">Inicio</a>
-      <a class="nav-link" href="#archivo" aria-disabled="true">Archivo</a>
-      <a class="nav-link" href="#about" aria-disabled="true">Sobre</a>
+      <a class="nav-link" href="#archivo">Archivo</a>
+      <a class="nav-link" href="#que-es-apod">¿Qué es APOD?</a>
     </nav>
   </header>
 
-  <!-- Hero -->
+  <!-- 1–2. Hero: APOD del día -->
   <main id="main" class="hero" role="main" aria-labelledby="apod-title">
-    <!-- Capa de fondo (se inyecta la imagen vía CSS var) -->
     <div class="hero__backdrop" aria-hidden="true"></div>
 
-    <!-- Contenido -->
     <section class="hero__content" aria-live="polite">
       <p class="eyebrow" id="apod-date">APOD — Cargando…</p>
-
       <h1 class="hero__title" id="apod-title">Cargando título…</h1>
-
       <p class="hero__subtitle" id="apod-credit">Créditos: —</p>
-
-      <p class="hero__description" id="apod-desc">
-        Preparando la explicación del día…
-      </p>
-      
+      <p class="hero__description" id="apod-desc">Preparando la explicación del día…</p>
 
       <div class="hero__actions">
         <a id="cta-detail" class="btn btn--primary" href="#" aria-label="Ver detalle del APOD de hoy">Ver detalle</a>
-        <a id="cta-archive" class="btn btn--ghost" href="#" aria-label="Explorar archivo de imágenes">Explorar archivo</a>
+        <a id="cta-archive" class="btn btn--ghost" href="#archivo" aria-label="Explorar archivo de imágenes">Explorar archivo</a>
       </div>
     </section>
 
-    <!-- Indicadores / extras -->
     <div class="hero__meta">
       <button id="open-hd" class="chip" type="button" aria-label="Abrir en alta resolución">HD</button>
       <button id="random-apod" class="chip" type="button" aria-label="Ver un APOD aleatorio">Aleatorio</button>
     </div>
   </main>
 
-  <!-- parte de la landing page del que es Apod-->
-   <section id="que-es-apod" class="section section-info">
+  <!-- 3. Explicación “¿Qué es APOD?” -->
+  <section id="que-es-apod" class="section section--info">
     <div class="container">
-      <h2 class="section_title">¿Qué es APOD?</h2>
-      <p class="section_lead">
-        <strong>
-          Astronomy Picture of the Day
-        </strong>
-        (APOD) es un proyecto de la NASA que cada día publica
+      <h2 class="section__title">¿Qué es APOD?</h2>
+      <p class="section__lead">
+        <strong>Astronomy Picture of the Day</strong> (APOD) es un proyecto de la NASA que cada día publica
         una imagen o video del cosmos, acompañada de una explicación escrita por astrónomos. Aquí te mostramos
         la pieza del día y te damos herramientas para explorar el archivo histórico.
       </p>
     </div>
-   </section>
+  </section>
 
-   <!-- galeria de los archivos destacados-->
-    <section id="archivo" class="section  section-gallery" aria-labelledby="gallery-title">
-      <div class="container">
-        <div class="section_head">
-          <h2 id="gallery-title" class="section-title">Archivo destacado</h2>
-          <button id="reload-gallery" class="chip" type="button" aria-label="Cargar otras piezas">Recargar</button>
-
-        </div>
-        <div id="gallery-grid" class="gallery-grid" role="list" aria-live="polite">
-          <!-- Aquí se inyectan las piezas vía JS -->
-        </div>
-        <div class="section_cta">
-          <a class="btn btn--primary" href="./archive.html" aria-disabled="true">Ver archivo completo</a>
-          <small class="muted">(proximamente)</small>
-        </div>
+  <!-- 4. Mini-galería de archivo destacado -->
+  <section id="archivo" class="section section--gallery" aria-labelledby="gallery-title">
+    <div class="container">
+      <div class="section__head">
+        <h2 id="gallery-title" class="section__title">Archivo destacado</h2>
+        <button id="reload-gallery" class="chip" type="button" aria-label="Cargar otras piezas">Recargar</button>
       </div>
 
-    </section>
-<!-- curiosidad -->
- <section class="section section--trivia" >
-  <div class="container trivia" role="note" aria-alive="polite">
-    <div class="trivia_eyebrow">Curiosidad del universo</div>
-    <div id="trivia-text" class="trivia_text">Cargando dato curioso...</div>
-    <button id="new-trivia" class="chip" type="button" aria-label="Nueva curiosidad">Otra</button>
-  </div>
- </section>
+      <div id="gallery-grid" class="gallery-grid" role="list" aria-live="polite">
+        <!-- tarjetas se inyectan por JS -->
+      </div>
 
-   <section class="section section--cta">
+      <div class="section__cta">
+        <a class="btn btn--primary" href="./archive.html" aria-disabled="true">Ver archivo completo</a>
+        <small class="muted">(Próximamente)</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Trivia / curiosidad -->
+  <section class="section section--trivia">
+    <div class="container trivia" role="note" aria-live="polite">
+      <div class="trivia__eyebrow">Curiosidad del universo</div>
+      <div id="trivia-text" class="trivia__text">Cargando dato curioso…</div>
+      <button id="new-trivia" class="chip" type="button" aria-label="Nueva curiosidad">Otra</button>
+    </div>
+  </section>
+
+  <!-- 6. Frase inspiracional / testimonios -->
+  <section class="section section--quote">
+    <div class="container quote">
+      <blockquote id="quote-text" class="quote__text">“Cargando frase…”</blockquote>
+      <cite id="quote-author" class="quote__author">— —</cite>
+      <button id="new-quote" class="chip" type="button" aria-label="Nueva frase">Otra</button>
+    </div>
+  </section>
+
+  <!-- 7. Call to Action final -->
+  <section class="section section--cta">
     <div class="container cta-final">
       <h2>¿Listo para explorar el cosmos?</h2>
       <p>Descubre cada día una historia nueva del universo y guarda tus favoritas.</p>
-      <div class="cta-final_actions">
+      <div class="cta-final__actions">
         <a href="#archivo" class="btn btn--primary">Explorar ahora</a>
         <a href="#" class="btn btn--ghost" aria-disabled="true">Crear colección (pronto)</a>
       </div>
     </div>
   </section>
 
-
-
-  <!-- Footer -->
+  <!-- 8. Footer -->
   <footer class="site-footer" role="contentinfo">
     <small>
       Datos vía <a href="https://api.nasa.gov/" rel="noopener" target="_blank">NASA APOD API</a>.
       Este sitio no es oficial de NASA.
     </small>
   </footer>
-   <script src="./assets/js/config.js"></script>
 
+  <!-- Importante: primero la key, luego el script principal -->
+  <script src="./assets/js/config.js"></script>
   <script src="./assets/js/main.js" defer></script>
 </body>
 </html>
