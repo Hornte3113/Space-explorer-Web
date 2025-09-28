@@ -158,6 +158,27 @@ async function loadGallery(n = 6){
   }
 }
 
+function renderGallery(list){
+  $galleryGrid.innerHTML = "";
+  list.forEach(item => {
+    const img = item.url || item.hdurl || item.thumbnail_url;
+    const card = document.createElement("a");
+    card.className = "card";
+    card.href = `./apod.html?date=${encodeURIComponent(item.date)}`;
+    card.setAttribute("role","listitem");
+    card.innerHTML = `
+      <div class="card__media" style="background-image:url('${img}')"></div>
+      <div class="card__body">
+        <h3 class="card__title">${escapeHTML(item.title || "APOD")}</h3>
+        <p class="card__meta">${item.date}</p>
+      </div>
+    `;
+    $galleryGrid.appendChild(card);
+  });
+}
+
+$reloadGallery?.addEventListener("click", () => loadGallery(6));
+
 
 
 
