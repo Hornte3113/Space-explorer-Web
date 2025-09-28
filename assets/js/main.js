@@ -1,7 +1,8 @@
 /* =========================
    Configuración APOD
    ========================= */
-const API_KEY = "DEMO_KEY"; // Reemplázala por tu key cuando la tengas
+const API_KEY = window.NASA_KEY || "DEMO_KEY";
+; // Reemplázala por tu key cuando la tengas
 const APOD_ENDPOINT = "https://api.nasa.gov/planetary/apod";
 
 /* Elementos del DOM */
