@@ -72,7 +72,26 @@
         una imagen o video del cosmos, acompañada de una explicación escrita por astrónomos. Aquí te mostramos
         la pieza del día y te damos herramientas para explorar el archivo histórico.
       </p>
+    </div>
    </section>
+
+   <!-- galeria de los archivos destacados-->
+    <section id="archivo" class="section  section-gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section_head">
+          <h2 id="gallery-title" class="section-title">Archivo destacado</h2>
+          <button id="reload-gallery" class="chip" type="button" aria-label="Cargar otras piezas">Recargar</button>
+
+        </div>
+        <div id="gallery-grid" class="gallery-grid" role="list" aria-live="polite">
+          <!-- Aquí se inyectan las piezas vía JS -->
+        </div>
+        <div class="section_cta">
+          <a class="btn btn--primary" href="./archive.html" aria-disabled="true">Ver archivo completo</a>
+        </div>
+      </div>
+
+    </section>
 
   <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
