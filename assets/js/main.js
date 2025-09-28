@@ -13,3 +13,13 @@ const $ctaDetail = document.getElementById("cta-detail");
 const $ctaArchive = document.getElementById("cta-archive");
 const $openHd = document.getElementById("open-hd");
 const $randomBtn = document.getElementById("random-apod"); 
+
+const $galleryGrid = document.getElementById("gallery-grid");
+const $reloadGallery = document.getElementById("reload-gallery");
+
+const $triviaText = document.getElementById("trivia-text");
+const $newTrivia = document.getElementById("new-trivia");
+
+const $quoteText = document.getElementById("quote-text");
+const $quoteAuthor = document.getElementById("quote-author");
+const $newQuote = document.getElementById("new-quote");
