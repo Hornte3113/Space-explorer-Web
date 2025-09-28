@@ -92,6 +92,18 @@ function renderFallback(){
   $ctaArchive.href = "#archivo";
 }
 
+/* Aleatorio (fecha entre 1995-06-16 y hoy) */
+function randomDate(){
+  const start = new Date("1995-06-16").getTime();
+  const end = Date.now();
+  const rand = new Date(start + Math.random() * (end - start));
+  return rand.toISOString().slice(0,10);
+}
+$randomBtn?.addEventListener("click", () => {
+  $hero.classList.remove("is-loaded");
+  loadAPOD(randomDate());
+});
+
 
   
 
