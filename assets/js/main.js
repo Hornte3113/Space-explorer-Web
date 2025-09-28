@@ -70,4 +70,28 @@ function renderAPOD(data){
 
   document.title = `${data.title} — Cosmos Diario`;
 }
+/* Respaldo local si falla la API */
+function renderFallback(){
+  const fallback = {
+    title: "The Great Lacerta Nebula",
+    date: "—",
+    credit: "Ian Moehring & Kevin Roylance",
+    explanation:
+      "Una de las nebulosas más grandes del cielo, de brillo tenue y difícil observación visual. Catalogada como Sharpless 126 (Sh2-126).",
+    img: "./assets/img/nebulosa-lacerta.jpg"
+  };
+
+  $title.textContent = fallback.title;
+  $date.textContent = "Imagen destacada";
+  $credit.textContent = `Créditos: ${fallback.credit}`;
+  $desc.textContent = fallback.explanation;
+  setHeroImage(fallback.img);
+
+  $openHd.onclick = () => window.open(fallback.img, "_blank", "noopener,noreferrer");
+  $ctaDetail.href = "#";
+  $ctaArchive.href = "#archivo";
+}
+
+
+  
 
