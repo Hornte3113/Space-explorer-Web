@@ -23,3 +23,14 @@ const $newTrivia = document.getElementById("new-trivia");
 const $quoteText = document.getElementById("quote-text");
 const $quoteAuthor = document.getElementById("quote-author");
 const $newQuote = document.getElementById("new-quote");
+
+/* Util */
+const escapeHTML = (str = "") =>
+  String(str).replace(/[&<>"']/g, (m) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m]));
+
+/* Imagen de fondo del hero (CSS var) */
+function setHeroImage(url){
+  document.documentElement.style.setProperty("--hero-image", `url("${url}")`);
+  requestAnimationFrame(() => $hero.classList.add("is-loaded"));
+}
+
