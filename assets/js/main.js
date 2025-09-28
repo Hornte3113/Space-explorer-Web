@@ -33,4 +33,41 @@ function setHeroImage(url){
   document.documentElement.style.setProperty("--hero-image", `url("${url}")`);
   requestAnimationFrame(() => $hero.classList.add("is-loaded"));
 }
+//Apod del dia
+async function loadAPOD(dateStr = null){
+  const url = new URL(APOD_ENDPOINT);
+  url.searchParams.set("api_key", API_KEY);
+  url.searchParams.set("thumbs", "true");
+  if (dateStr) url.searchParams.set("date", dateStr);
+
+  try{
+    const res = await fetch(url.toString(), { cache: "no-store" });
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    renderAPOD(data);
+  }catch(err){
+    console.warn("Fallo APOD, usando respaldo local:", err);
+    renderFallback();
+  }
+}
+
+function renderAPOD(data){
+  const isVideo = data.media_type === "video";
+  const imgUrl = !isVideo
+    ? (data.hdurl || data.url)
+    : (data.thumbnail_url || data.url);
+
+  $title.textContent = data.title || "Astronomy Picture of the Day";
+  $date.textContent = `APOD — ${data.date || "hoy"}`;
+  $credit.textContent = data.copyright ? `Créditos: ${data.copyright}` : "Créditos: NASA / APOD";
+  $desc.textContent = data.explanation || "";
+
+  setHeroImage(imgUrl);
+
+  $openHd.onclick = () => window.open(imgUrl, "_blank", "noopener,noreferrer");
+  $ctaDetail.href = `./apod.html?date=${encodeURIComponent(data.date || "")}`;
+  $ctaArchive.href = `#archivo`;
+
+  document.title = `${data.title} — Cosmos Diario`;
+}
 
