@@ -103,6 +103,44 @@ $randomBtn?.addEventListener("click", () => {
   $hero.classList.remove("is-loaded");
   loadAPOD(randomDate());
 });
+/* Efecto parallax sutil */
+let raf = null;
+window.addEventListener("mousemove", (e) => {
+  if(raf) return;
+  raf = requestAnimationFrame(() => {
+    const { innerWidth:w, innerHeight:h } = window;
+    const x = (e.clientX / w - .5) * 4;
+    const y = (e.clientY / h - .5) * 4;
+    const el = document.querySelector(".hero__backdrop");
+    if (el) el.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
+    raf = null;
+  });
+});
+async function fetchAPOD(dateStr){
+  const u = new URL(APOD_ENDPOINT);
+  u.searchParams.set("api_key", API_KEY);
+  u.searchParams.set("thumbs", "true");
+  u.searchParams.set("date", dateStr);
+  const r = await fetch(u.toString());
+  if (!r.ok) throw new Error("APOD fetch error");
+  return r.json();
+}
+
+/* Galería de APODs destacados */
+async function fetchAPOD(dateStr){
+  const u = new URL(APOD_ENDPOINT);
+  u.searchParams.set("api_key", API_KEY);
+  u.searchParams.set("thumbs", "true");
+  u.searchParams.set("date", dateStr);
+  const r = await fetch(u.toString());
+  if (!r.ok) throw new Error("APOD fetch error");
+  return r.json();
+}
+
+
+
+
+
 
 
   
