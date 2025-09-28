@@ -180,7 +180,36 @@ function renderGallery(list){
 $reloadGallery?.addEventListener("click", () => loadGallery(6));
 
 
+//Parte de la trivia
+const TRIVIA = [
+  "Hay más estrellas en el universo observable que granos de arena en todas las playas de la Tierra.",
+  "La Vía Láctea y Andrómeda colisionarán en ~4,5 mil millones de años.",
+  "Los agujeros negros no “aspiran” todo: sólo influyen fuertemente cerca de su horizonte de sucesos.",
+  "Un día en Venus dura más que su año: rota más lento de lo que orbita al Sol.",
+  "Las nebulosas pueden ser viveros estelares donde nacen nuevas estrellas."
+];
 
+const QUOTES = [
+  { q: "We are a way for the cosmos to know itself.", a: "Carl Sagan" },
+  { q: "Somewhere, something incredible is waiting to be known.", a: "Carl Sagan" },
+  { q: "The universe is under no obligation to make sense to you.", a: "Neil deGrasse Tyson" },
+  { q: "Not only is the Universe stranger than we think, it is stranger than we can think.", a: "Werner Heisenberg" },
+  { q: "El misterio crea maravilla y la maravilla es la base del deseo humano de comprender.", a: "Neil Armstrong" }
+];
+
+function setTrivia(){
+  const t = TRIVIA[Math.floor(Math.random()*TRIVIA.length)];
+  $triviaText.textContent = t;
+}
+function setQuote(){
+  const it = QUOTES[Math.floor(Math.random()*QUOTES.length)];
+  $quoteText.textContent = `“${it.q}”`;
+  $quoteAuthor.textContent = `— ${it.a}`;
+}
+$newTrivia?.addEventListener("click", setTrivia);
+$newQuote?.addEventListener("click", setQuote);
+
+//init
 
 
 
