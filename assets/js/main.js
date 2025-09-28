@@ -137,6 +137,27 @@ async function fetchAPOD(dateStr){
   return r.json();
 }
 
+async function loadGallery(n = 6){
+  $galleryGrid.innerHTML = '<div class="skeleton-row" aria-hidden="true"></div>';
+  const promises = [];
+  const picked = new Set();
+  while (promises.length < n){
+    const d = randomDate();
+    if (picked.has(d)) continue;
+    picked.add(d);
+    promises.push(fetchAPOD(d));
+  }
+
+  try{
+    const items = await Promise.all(promises);
+    const usable = items.filter(it => it.media_type === "image"); // evita videos en mini
+    renderGallery(usable.slice(0, n));
+  }catch(e){
+    console.warn("Fallo galería:", e);
+    $galleryGrid.innerHTML = '<p class="muted">No se pudieron cargar elementos del archivo.</p>';
+  }
+}
+
 
 
 
