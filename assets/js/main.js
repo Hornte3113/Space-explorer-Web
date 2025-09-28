@@ -211,6 +211,27 @@ $newQuote?.addEventListener("click", setQuote);
 
 //init
 
+function smoothInternalLinks(){
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener("click", (e)=>{
+      const id = a.getAttribute("href").slice(1);
+      const el = document.getElementById(id);
+      if(el){
+        e.preventDefault();
+        el.scrollIntoView({ behavior:"smooth", block:"start" });
+      }
+    });
+  });
+}
+
+(async function init(){
+  smoothInternalLinks();
+  setTrivia();
+  setQuote();
+  loadAPOD();      // APOD de hoy
+  loadGallery(6);  // mini-galería
+})();
+
 
 
 
