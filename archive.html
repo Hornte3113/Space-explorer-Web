@@ -31,6 +31,29 @@
         <p class="section__lead">Explora el histórico de imágenes de la NASA. Filtra por fechas o navega por páginas.</p>
       </div>
     </section>
+    <section class="section">
+      <div class="container">
+        <form id="filters" class="archive-filters" aria-label="Filtros del archivo">
+          <div class="field">
+            <label for="date-to">Hasta</label>
+            <input id="date-to" name="date_to" type="date" />
+          </div>
+          <div class="field">
+            <label for="per-page">Por página</label>
+            <select id="per-page" name="per_page">
+              <option value="9">9</option>
+              <option value="12" selected>12</option>
+              <option value="18">18</option>
+              <option value="24">24</option>
+            </select>
+          </div>
+          <div class="field check">
+            <label><input id="only-images" type="checkbox" checked /> Solo imágenes</label>
+          </div>
+          <div class="field">
+            <button class="btn btn--primary" type="submit">Aplicar</button>
+          </div>
+        </form>
 <body>
   
 </body>
