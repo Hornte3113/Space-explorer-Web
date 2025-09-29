@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cosmos Diario — Detalle APOD</title>
+  <meta name="description" content="Detalle de Astronomy Picture of the Day (APOD) de la NASA." />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" role="banner" aria-label="Encabezado principal">
+    <a class="brand" href="./index.html" aria-label="Volver al inicio">
+      <span class="brand__dot" aria-hidden="true"></span>
+      <span class="brand__name">Space-explorer</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Navegación principal">
+      <a class="nav-link" href="./index.html">Inicio</a>
+      <a class="nav-link" href="./archive.html">Archivo</a>
+      <a class="nav-link is-active" href="#">Detalle</a>
+    </nav>
+  </header>
+
+  <main id="detail" class="detail" style="padding-top: 84px">
+    <section class="section">
+      <div class="container detail__wrap">
+        <!-- Cabecera -->
+        <div class="detail__head">
+          <div>
+            <p class="eyebrow" id="apod-date">APOD — Cargando…</p>
+            <h1 class="detail__title" id="apod-title">Cargando título…</h1>
+            <p class="detail__credit" id="apod-credit">Créditos: —</p>
+          </div>
+          <div class="detail__controls">
+            <label class="detail__label" for="pick-date">Fecha</label>
+            <input id="pick-date" type="date" />
+            <div class="detail__nav">
+              <button id="prev" class="btn btn--ghost" type="button" aria-label="Día anterior">Anterior</button>
+              <button id="next" class="btn btn--ghost" type="button" aria-label="Día siguiente">Siguiente</button>
+              <button id="open-hd" class="btn btn--primary" type="button" aria-label="Abrir en alta resolución">HD</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Media -->
+        <div id="media" class="detail__media" aria-live="polite">
+          <!-- imagen o video se inyecta por JS -->
+        </div>
+
+        <!-- Descripción -->
+        <article class="detail__desc">
+          <h2 class="sr-only">Descripción</h2>
+          <p id="apod-desc">Cargando descripción completa…</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <small>
+      Datos vía <a href="https://api.nasa.gov/" rel="noopener" target="_blank">NASA APOD API</a>.
+      Este sitio no es oficial de NASA.
+    </small>
+  </footer>
+
+  <!-- Orden: key -> script -->
+  <script src="./assets/js/config.js"></script>
+  <script src="./assets/js/apod.js" defer></script>
+</body>
+</html>
