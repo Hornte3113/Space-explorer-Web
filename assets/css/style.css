@@ -234,3 +234,26 @@ body{
   box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand), white 15%), 0 0 0 6px rgba(255,255,255,.15);
   border-radius: 12px;
 }
+/* ====== Vista 2: Archivo ====== */
+.archive-filters{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(160px, 1fr)) auto auto;
+  gap: 12px;
+  align-items: end;
+}
+.archive-filters .field{ display:grid; gap:6px; }
+.archive-filters .field.check{ align-self: center; }
+.archive-filters label{ font-weight: 700; font-size: .9rem; color: var(--muted); }
+.archive-filters input[type="date"],
+.archive-filters select{
+  appearance: none;
+  background: #0f131c;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.archive-pager{
+  display:flex; justify-content: center; gap: 12px;
+  margin-top: 18px;
+}

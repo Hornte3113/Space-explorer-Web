@@ -98,3 +98,54 @@ function render(items){
      $grid.appendChild(a);
   }
 }
+
+async function loadPage(){
+  showSkeleton(3, Math.ceil(state.perPage/3));
+  try{
+    const { items, start, end } = await fetchRange(state.cursorEnd, state.perPage);
+    render(items);
+    setRangeLabel(start, end);
+
+    // habilitar/deshabilitar paginadores
+    const today = clampDate(new Date());
+    const minDate = new Date("1995-06-16");
+    // "Más recientes" va hacia adelante (sube fechas)
+    $prev.disabled = end >= today; // si ya tocamos hoy, no hay más recientes
+    // "Más antiguos" va hacia atrás (baja fechas)
+    $next.disabled = start <= minDate;
+  }catch(e){
+    console.warn(e);
+    $grid.innerHTML = `<p class="muted">No se pudo cargar el archivo. Intenta de nuevo.</p>`;
+    $rangeLabel.textContent = "";
+  }
+}
+
+/* Eventos */
+$filters.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const to = $dateTo.value ? parseISO($dateTo.value) : new Date();
+  state.cursorEnd = clampDate(to);
+  state.perPage = Number($perPage.value || 12);
+  state.imagesOnly = !!$onlyImages.checked;
+  loadPage();
+});
+$prev.addEventListener("click", () => {
+  // Ir a más recientes => movemos cursorEnd hacia delante
+  state.cursorEnd = clampDate(addDays(state.cursorEnd, state.perPage));
+  loadPage();
+});
+$next.addEventListener("click", () => {
+  // Ir a más antiguos => movemos cursorEnd hacia atrás
+  state.cursorEnd = clampDate(addDays(state.cursorEnd, -state.perPage));
+  loadPage();
+});
+
+/* Init */
+(function init(){
+  // Valores por defecto del formulario
+  $dateTo.value = fmt(state.cursorEnd);
+  $perPage.value = String(state.perPage);
+  $onlyImages.checked = state.imagesOnly;
+
+  loadPage();
+})();
